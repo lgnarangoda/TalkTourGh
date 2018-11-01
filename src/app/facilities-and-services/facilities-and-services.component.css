@@ -1,0 +1,64 @@
+.out {
+  margin-top: 50px;
+}
+
+.form {
+  position: relative;
+
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.block {
+  width: 100%;
+}
+
+
+.form-group {
+  background-color: white;
+  padding: 15px;
+}
+
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.add-language{
+  margin-top: 25px;
+}
+/*.add-language span{*/
+  /*border: 1px solid red;*/
+
+/*}*/
+mat-icon{
+  vertical-align: bottom;
+
+}
+.remove{
+  margin-left: 5px;
+}
+mat-grid-tile {
+  background:#c5cae9;
+  color: black;
+}
+mat-grid-list{
+
+  padding: 0;
+
+}
+.example-margin {
+  margin: 0 10px;
+}
+/*mat-checkbox{*/
+  /*color: #00675b;*/
+/*}*/
+.couple{
+  margin-top: 15px;
+}
+.facilities h5{
+
+  margin-bottom: 25px;
+}

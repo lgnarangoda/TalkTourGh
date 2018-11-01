@@ -1,0 +1,39 @@
+<div class="row out page-wrap">
+
+  <form [formGroup]="layoutPrizingForm" (ngSubmit)="onProceed(f)" #f="ngForm" class="form col-lg-8 col-11">
+
+
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder=""
+                    formControlName="roomType" (selectionChange)="changeProperty($event.target)">
+          <mat-option *ngFor="let room of roomDetails" [value]="room.roomType">{{room.roomType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <div class="range">
+      <div>
+        <label>Select a range : </label>
+      </div>
+
+
+      <mat-form-field class="from">
+        <input matInput [matDatepicker]="picker1" placeholder="From:"   formControlName="from">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="to">
+        <input matInput [matDatepicker]="picker2" placeholder="To:"   formControlName="to">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+  </form>
+</div>
+
+
+
+

@@ -1,0 +1,10 @@
+<h1>location</h1>
+
+<div class="form-group">
+  <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+</div>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapRightClick)="setPosition($event)">
+  <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+</agm-map>
+
+<button class="btn btn-success block" (click)="navigateLayout()" [disabled]="!propertyId">Proceed</button>

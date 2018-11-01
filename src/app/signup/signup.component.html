@@ -1,0 +1,91 @@
+
+<h3 mat-dialog-title>Sign In</h3>
+<div mat-dialog-content>
+
+
+    <div class="alert {{alertClase}}">
+      {{message}}
+    </div>
+    <form [formGroup]="signUpForm"  (ngSubmit)="onSignUp(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="name" name="name"  class="form-control" formControlName="name" maxlength="40">
+        <div
+          *ngIf="signUpForm.hasError('required', ['name']) && signUpForm.get('name').touched"
+          class="help-block">*Name should not be empty</div>
+        <div *ngIf="signUpForm.hasError('pattern', ['name']) && signUpForm.get('name').touched" class="help-block">
+          *No Numeric value allowed!
+        </div>
+        <div *ngIf="signUpForm.hasError('minlength', ['name']) && signUpForm.get('name').touched" class="help-block">
+          *Name must be at least 3 characters long.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="username" name="username"  class="form-control" formControlName="username" maxlength="15">
+
+        <div
+          *ngIf="signUpForm.hasError('required', ['username']) && signUpForm.get('username').touched"
+          class="help-block">*Username should not be empty</div>
+        <div *ngIf="signUpForm.hasError('minlength', ['username']) && signUpForm.get('username').touched" class="help-block">
+          *Name must be at least 3 characters long.
+        </div>
+
+        <div *ngIf="signUpForm.hasError('pattern', ['username']) && signUpForm.get('username').touched" class="help-block">
+          *No Numeric value allowed!
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" name="email"  class="form-control" formControlName="email"  maxlength="50">
+
+        <div
+          *ngIf="signUpForm.hasError('required', ['email']) && signUpForm.get('email').touched"
+          class="help-block">*Username should not be empty</div>
+
+        <div
+          *ngIf="signUpForm.hasError('email', ['email']) && signUpForm.get('email').touched"
+          class="help-block">*Invalid email address</div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="text" id="password" name="password"  class="form-control" formControlName="password" maxlength="30">
+
+        <div
+          *ngIf="signUpForm.hasError('required', ['password']) && signUpForm.get('password').touched"
+          class="help-block">*Password should not be empty</div>
+        <div *ngIf="signUpForm.hasError('minlength', ['password']) && signUpForm.get('password').touched" class="help-block">
+          *Password must be at least 6 characters long.
+        </div>
+
+        <div *ngIf="signUpForm.hasError('pattern', ['password']) && signUpForm.get('password').touched" class="help-block">
+          *Password should contain at least one numeric!
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="text" id="cnfmpassword" name="cnfmpassword"  class="form-control" formControlName="cnfmpassword" maxlength="30">
+
+        <div *ngIf="signUpForm.hasError('compare', ['cnfmpassword']) && signUpForm.get('cnfmpassword').touched" class="help-block">
+          *Password is not match.
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary" type="submit" >Sign Up</button>
+
+    </form>
+
+  </div>
+
+
+
+

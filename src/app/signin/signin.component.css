@@ -1,0 +1,68 @@
+
+/*.form{*/
+  /*!*border: 1px solid red;*!*/
+
+  /*position: relative;*/
+    /*left: 50%;*/
+  /*transform: translate(-50%, 0%);*/
+/*}*/
+/*.row{*/
+  /*margin-top: 75px;*/
+  /*border: 1px solid black;*/
+/*}*/
+/*.signin{*/
+  /*!*display: inline;  border: 1px solid black;*!*/
+/*}*/
+
+
+/*--------------------------------------------------------------
+# Create Account
+--------------------------------------------------------------*/
+.signup{
+  display: inline;
+  /*border: 1px solid black;*/
+margin-left: 10px;
+  color: #555;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 4px 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+.signup:hover {
+  cursor: pointer;
+  color: #1E88E5;
+}
+
+
+/*--------------------------------------------------------------
+# Social Login
+--------------------------------------------------------------*/
+
+.social-login{
+margin-top: 20px;
+}
+
+.social-login .btns {
+  color: #555;
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 4px 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+@media (max-width: 575px) {
+  .social-login .btns {
+    margin: 4px 8px;
+  }
+}
+
+.social-login .btns:hover {
+  cursor: pointer;
+  color: #1E88E5;
+}

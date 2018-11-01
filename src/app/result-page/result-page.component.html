@@ -1,0 +1,67 @@
+<div class="alert {{alertClase}}">
+  {{message}}
+</div>
+<section id="get-started" class="padd-section text-center wow ">
+
+  <div class="container">
+    <div class="section-title text-center">
+
+      <h2>List of properties you have </h2>
+      <!--<p class="separator">Integer cursus bibendum augue ac cursus .</p>-->
+
+      <button class="add-button" mat-button (click)="navigateAddProperty()">Add a new property + </button>
+
+    </div>
+
+
+
+
+
+    <div class="row properties" *ngIf="progress_complete; else progress">
+      <div class="col-md-6 col-lg-4" *ngFor="let property of propertyArray">
+        <div class="feature-block">
+          <i class="fa fa-times-circle fa-3x close" (click)="deleteProperty(property.propertyId)"></i>
+          <!--<img *ngIf="coverPhoto" [src]="coverPhoto.image" class="image-style"/>-->
+          <div (click)="navigateToEditPanel(property.propertyId)">
+
+            <img *ngIf="coverPhoto"  [src]="coverPhoto.image" alt="img" class="img-fluid">
+            <h4> {{property.propertyName}}</h4>
+            <p> {{property.streetAdd}}</p>
+          </div>
+
+          <a href="#">read more</a>
+
+        </div>
+      </div>
+
+      <!--<div class="col-md-6 col-lg-4">-->
+        <!--<div class="feature-block">-->
+
+          <!--<img src="../../assets/img/svg/planet.svg" alt="img" class="img-fluid">-->
+          <!--<h4>user friendly interface</h4>-->
+          <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>-->
+          <!--<a href="#">read more</a>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="col-md-6 col-lg-4">-->
+        <!--<div class="feature-block">-->
+
+          <!--<img src="../../assets/img/svg/asteroid.svg" alt="img" class="img-fluid">-->
+          <!--<h4>build the app everyone love</h4>-->
+          <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>-->
+          <!--<a href="#">read more</a>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+    </div>
+
+    <ng-template #progress>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+
+</section>
+

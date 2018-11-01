@@ -1,0 +1,114 @@
+<div class="row out">
+
+  <form [formGroup]="facilitiesAndServiceForm" (ngSubmit)="onSubmitFacilities(f)" #f="ngForm"  style="padding: 0" class="form col-lg-8 col-11">
+
+    <div >
+
+      <h3>Facilities and services</h3>
+      <label>Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.</label>
+
+      <div class="form-group">
+        <h5>Internet</h5>
+        <label>Is internet availble to guest?</label>
+        <select
+          id="internet"
+          class="form-control"
+          formControlName="internet"
+
+        >
+          <option *ngFor="let internet of parkingAndInternet" [value]="internet">{{internet}}</option>
+        </select>
+        <!--<span-->
+        <!--*ngIf="!hotelDetailsForms.get('hotel_name').valid && hotelDetailsForms.get('hotel_name').touched"-->
+        <!--class="help-block">Please enter a valid hotel name!</span>-->
+      </div>
+
+      <div class="form-group">
+        <h5>Parking</h5>
+        <label>Is parking availble to guest?</label>
+        <select
+          id="parking"
+          class="form-control"
+          formControlName="parking"
+
+        >
+          <option *ngFor="let parking of parkingAndInternet" [value]="parking">{{parking}}</option>
+        </select>
+        <!--<span-->
+        <!--*ngIf="!hotelDetailsForms.get('hotel_name').valid && hotelDetailsForms.get('hotel_name').touched"-->
+        <!--class="help-block">Please enter a valid hotel name!</span>-->
+      </div>
+
+      <div class="form-group">
+        <h5>Breakfast</h5>
+        <label>Is breakfest availble to guest?</label>
+        <select
+          id="breakfast"
+          class="form-control"
+          formControlName="breakfast"
+
+        >
+          <option *ngFor="let breakfast of breakfasts" [value]="breakfast">{{breakfast}}</option>
+        </select>
+        <!--<span-->
+        <!--*ngIf="!hotelDetailsForms.get('hotel_name').valid && hotelDetailsForms.get('hotel_name').touched"-->
+        <!--class="help-block">Please enter a valid hotel name!</span>-->
+      </div>
+      myForm.get('addresses')['controls']
+
+      <div class="form-group" formArrayName="languagess">
+        <h5>Language spoken</h5>
+        <p>What language do you your staff speaking</p>
+        <div class="language-group"   *ngFor="let languageControl of facilitiesAndServiceForm.get('languagess')['controls']; index as i">
+          <div style="display: inline-block" >
+            <select
+              id="i"
+              class="form-control"
+              [formControlName]="i"
+            >
+              <option *ngFor="let language of languages"  [value]="language">{{language}}</option>
+            </select>
+          </div>
+
+          <span  *ngIf="i>0" class="remove" (click)="removeLanguage(i)"><mat-icon style="vertical-align: middle" svgIcon="delete"></mat-icon>Remove</span>
+        </div>
+        <div class="add-language">
+
+          <span (click)="addLanguages()">  <mat-icon svgIcon="add"></mat-icon> Add another language</span>
+        </div>
+
+      </div>
+
+<div class="form-group facilities">
+  <h5>Popular facilities, activities and services provided onsite</h5>
+
+      <mat-grid-list cols="2" rowHeight="7:1">
+        <div formArrayName="facilities">
+          <mat-grid-tile for
+                         *ngFor="let facility of facilitiesAndServiceForm.controls.facilities['controls']; index as i">
+            <div [formGroupName]="i">
+              <mat-checkbox color="primary" class="example-margin" class="form-control"
+                            formControlName="checked">{{facility.value.item}}
+              </mat-checkbox>
+            </div>
+          </mat-grid-tile>
+        </div>
+
+
+        <!--<mat-grid-tile for="facilities2"><mat-checkbox class="example-margin"  class="form-control" formControlName="facilities2" id="facilities2">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+
+        <!--<mat-grid-tile> <mat-checkbox color="primary" class="example-margin"  class="form-control" formControlName="facilities4">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+        <!--<mat-grid-tile> <mat-checkbox color="primary" class="example-margin"  class="form-control" formControlName="facilities5">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+        <!--<mat-grid-tile> <mat-checkbox color="primary" class="example-margin"  class="form-control" formControlName="facilities6">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+        <!--<mat-grid-tile> <mat-checkbox color="primary" class="example-margin"  class="form-control" formControlName="facilities7">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+        <!--<mat-grid-tile> <mat-checkbox color="primary" class="example-margin"  class="form-control" formControlName="facilities8">Airport shuttle</mat-checkbox></mat-grid-tile>-->
+      </mat-grid-list>
+
+</div>
+
+        <button class="btn btn-success block" type="submit" [disabled]="!propertyId">Proceed</button>
+
+
+    </div>
+  </form>
+</div>

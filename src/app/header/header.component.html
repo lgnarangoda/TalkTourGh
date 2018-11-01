@@ -1,0 +1,92 @@
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">-->
+
+  <!--<a class="navbar-brand" href="#">-->
+    <!--<img src="/assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="" style="display: inline">-->
+    <!--TalkTour</a>-->
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon" ></span>-->
+  <!--</button>-->
+
+  <!--<div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">-->
+    <!--<ul class="navbar-nav mr-auto">-->
+      <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" routerLink="/result-page">Home <span class="sr-only">(current)</span></a>-->
+      <!--</li>-->
+
+    <!--</ul>-->
+    <!--<form class="form-inline my-2 my-lg-0">-->
+      <!--<ul class="navbar-nav mr-auto">-->
+        <!--<li class="nav-item">-->
+
+        <!--</li>-->
+
+        <!--<li class="nav-item dropdown" ngbDropdown *ngIf="isLoggedIn$ | async as isLoggedIn"  >-->
+          <!--<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>-->
+            <!--Hello, {{username}}-->
+          <!--</a>-->
+          <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>-->
+            <!--<a class="dropdown-item" routerLink="/signin" (click)=" logout()" href="#">Sign Out</a>-->
+            <!--<div class="dropdown-divider"></div>-->
+
+          <!--</div>-->
+        <!--</li>-->
+
+      <!--</ul>-->
+
+    <!--</form>-->
+  <!--</div>-->
+<!--</nav>-->
+
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link disabled" href="#">Disabled</a>-->
+          <!--<a class="nav-link" routerLink="/signin" *ngIf="isLoggedIn$ | async as isLoggedIn" (click)=" logout()">Sign Out</a>-->
+
+
+<header id="header" class="header header-hide">
+  <div class="container">
+
+    <div id="logo" class="pull-left">
+      <!--<h1><a href="#body" class="scrollto"><span>e</span>Startup</a></h1>-->
+      <!-- Uncomment below if you prefer to use an image logo -->
+       <a href="#body" ><img src="../../assets/WEB%20LOGO.png" alt="" title="" class="logo"/></a>
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><a href="#hero">Home</a></li>
+        <li><a href="#about-us">About</a></li>
+        <li><a href="#features">Thing to do</a></li>
+        <li><a href="#screenshots">Mobile app</a></li>
+        <li><a href="#team">Resturant</a></li>
+        <li><a href="#hotels">Hotels</a></li>
+
+
+        <li class="menu-has-children" >
+          <a *ngIf="isLoggedIn$ | async as isLoggedIn; else myaccount" href="">{{name}}</a>
+          <ng-template #myaccount><a href="">My Account</a></ng-template>
+          <ul>
+
+            <!--if login-->
+            <li><a  (click)="signOut()" *ngIf="isLoggedIn$ | async as isLoggedIn; else signIn">Sign Out</a></li>
+            <!--if not log in-->
+
+            <ng-template #signIn><li><a  (click)="openDialog()">Sign In</a></li></ng-template>
+            <hr *ngIf="isLoggedIn$ | async as isLoggedIn" >
+            <!--if login-->
+            <li><a (click)="navigateResult()" *ngIf="isLoggedIn$ | async as isLoggedIn">Your Properties</a></li>
+
+            <li><a (click)="navigateAddProperty()" *ngIf="isLoggedIn$ | async as isLoggedIn">Add Properties</a></li>
+
+          </ul>
+        </li>
+
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+</header><!-- #header -->
+
+
+
+<!--[{outlets: {sidebar: 'add-property'}}]-->

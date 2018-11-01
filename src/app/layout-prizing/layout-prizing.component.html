@@ -1,0 +1,172 @@
+<div class="row out">
+
+  <form [formGroup]="layoutPrizingForm" (ngSubmit)="onSubmitLayout()" style="padding: 0" class="form col-lg-8 col-11">
+
+    <div formGroupName="roomDetails">
+
+      <h3>Layout and pricing</h3>
+      <label>Tell us about your first room. Once complete, you'll be able to fill in the details of your other
+        rooms.</label>
+
+      <div class="form-group">
+        <h5>Plese select</h5>
+        <label>Room Type</label>
+        <select
+          id="rooms"
+          class="form-control"
+          formControlName="roomsType"
+        >
+          <option *ngFor="let roomType of roomTypes" [value]="roomType">{{roomType}}</option>
+        </select>
+
+        <div style="display: inline-block">
+          <label>Number of rooms(of this type)</label>
+          <select
+            id="noOfRooms"
+            class="form-control" style="display: inline-block"
+            formControlName="LnoOfRooms"
+          >
+            <option *ngFor="let noOfRoom of noOfRooms" [value]="noOfRoom">{{noOfRoom}}</option>
+          </select>
+        </div>
+
+        <div style="float: right">
+          <label>Smoking policy</label>
+          <select
+            id="smoking"
+            class="form-control"
+            formControlName="smoking"
+          >
+            <option *ngFor="let smoking of smokings" [value]="smoking">{{smoking}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-group bed_option">
+        <h5>Bed options</h5>
+        <div style="display: inline-block">
+
+          <div class="couple">
+            <label>What kind of beds are available in this room?</label>
+            <select
+              id="bedType"
+              class="form-control"
+              formControlName="bedType"
+            >
+              <option *ngFor="let bedType of bedTypes" [value]="bedType">{{bedType}}</option>
+            </select>
+
+          </div>
+        </div>
+        <label class="multiply">X</label>
+        <div style="display: inline-block">
+          <label>No of beds</label>
+          <select
+            id="noOfBeds"
+            class="form-control"
+            formControlName="noOfBeds"
+          >
+            <option *ngFor="let noOfBed of noOfBeds" [value]="noOfBed">{{noOfBed}}</option>
+          </select>
+        </div>
+        <br>
+
+        <div class="couple">
+          <label>How many guest can stay this room?</label>
+          <select
+            id="guest"
+            class="form-control"
+            formControlName="guest"
+          >
+            <option *ngFor="let noOfPerson of noOfPersons" [value]="noOfPerson">{{noOfPerson}}</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+        <h5>Room Size(Optional)</h5>
+        <div class="roomSizeClass">
+          <input
+            type="number"
+            id="size"
+            formControlName="roomSize"
+            class="form-control"
+          >
+        </div>
+        <div class="roomSizeClass2">
+          <select
+            id="roomSize"
+            class="form-control"
+            formControlName="roomSizeType"
+
+          >
+            <option *ngFor="let roomSizeType of roomSizeTypes" [value]="roomSizeType">{{roomSizeType}}</option>
+          </select>
+        </div>
+
+
+      </div>
+
+
+      <div class="form-group">
+        <h5>Base price per night</h5>
+        <div class="roomSizeClass">
+          <input
+            type="text"
+            id="curency"
+            formControlName="curency"
+            class="form-control"
+            value="US$/per night"
+          >
+        </div>
+        <div class="roomSizeClass2">
+          <input
+            type="number"
+            id="price"
+            formControlName="price"
+            class="form-control"
+          >
+        </div>
+      </div>
+
+      <div class="row" *ngIf="!IsUpdate;else updateButton">
+        <button [disabled]="!propertyId" class="btn btn-success block" type="submit" [disabled]="!propertyId">Proceed</button>
+      </div>
+      <ng-template class="row" #updateButton>
+        <button class="btn btn-success block" (click)="update()" [disabled]="!propertyId">Update Room</button>
+      </ng-template>
+    </div>
+
+
+  </form>
+
+
+</div>
+
+
+<div class="form col-sm-8 noroom form-group " *ngIf="norooms;else rooms">
+  <h4>No rooms added</h4>
+</div>
+
+<ng-template #rooms>
+  <div class="overview form col-sm-8  form-group" *ngFor="let room of response; let i = index" [attr.data-index]="i">
+    <div>
+      {{room.roomType}}
+      <span>{{room.noOfRooms}}</span>
+      <button mat-raised-button (click)="editRoom(i)">Edit</button>
+      <button mat-raised-button (click)="deleteRoom(room.roomId)">Delete</button>
+
+    </div>
+
+  </div>
+</ng-template>
+
+
+
+
+
+<!--(change)="changeTypes($event.target)"-->

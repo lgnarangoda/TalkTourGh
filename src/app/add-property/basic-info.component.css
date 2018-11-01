@@ -1,0 +1,54 @@
+.out{
+  margin-top: 50px;
+
+}
+.form{
+position: relative;
+
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+}
+/*input.ng-invalid.ng-touched{*/
+
+  /*border-bottom: 1px solid red;*/
+/*}*/
+.block{
+  width: 100%;
+}
+.form-group {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.active{
+padding: 14px;
+}
+#acco-type-help{
+  margin-top: 5px;
+  background-color: #cccccc;
+  padding-left: 5px;
+}
+.couple{
+  margin-top: 15px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.example-full-width {
+  width: 100%;
+}
+
+.close{
+  width: 5px;
+}
+

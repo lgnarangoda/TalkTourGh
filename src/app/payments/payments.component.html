@@ -1,0 +1,145 @@
+<div class="row out">
+
+  <form [formGroup]="payementForm" (ngSubmit)="onSubmitPayments(f)" style="padding: 0" class="form col-lg-8 col-11"
+        #f="ngForm">
+
+
+    <h3>Payments</h3>
+    <label>Specify the types of payment you accept, tax details and other options like additional charges.</label>
+
+    <div formGroupName="creditCard">
+    <div  class="form-group">
+      <h5>Guest payment options</h5>
+      <label>Can you charge credit cards at the property?</label>
+      <br>
+      <mat-radio-group formControlName="isAllowCreditCard" (change)="changeIsAllow($event.value)">
+        <mat-radio-button value="Yes">Yes</mat-radio-button>
+        <mat-radio-button value="No">No</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="isCreditCardAllow"  id="creditcard_section" class="creditcard_section form-group row">
+
+
+        <div class="col-sm-6">
+          <label class="checkbox creditcard americanexpress cc_break" for="cc_id_1">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_1" value="1" formControlName="americanExpress">
+              American Express</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard visa " for="cc_id_2">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_2" value="2" formControlName="visa">
+              Visa</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard euromastercard " for="cc_id_3">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_3" value="3" formControlName="masterCard">
+              Euro/Mastercard</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard dinersclub " for="cc_id_5">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_5" value="5" formControlName="diner">
+              Diners Club</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard jcb " for="cc_id_7">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_7" value="7">
+              JCB</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard maestro cc_break" for="cc_id_10">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_10" value="10">
+              Maestro</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard discover " for="cc_id_11">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_11" value="11">
+              Discover</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-6">
+          <label class="checkbox creditcard unionpaycreditcard " for="cc_id_44">
+            <mat-checkbox type="checkbox" name="cc_id" id="cc_id_44" value="44">
+              UnionPay credit card</mat-checkbox>
+          </label>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+      <div class="couple form-group">
+        <h4>Taxes</h4>
+        <label>Please select your vat and city taxes</label>
+
+        <br>
+        <mat-radio-group formControlName="tax">
+          <mat-radio-button value="Yes">Default (11 is usually excluded in Wellawaya room prices)</mat-radio-button>
+          <mat-radio-button value="No">I don't need to pay VAT</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+
+
+
+    <div class="form-group">
+      <h5 class="warning-header">Commission payments</h5>
+
+      <label>At the beginning of each month we will send you an invoice for all complete bookings in the previous
+        month.</label>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="What name should be placed on the invoice (e.g. legal/company name)?"
+                    formControlName="invoiceName" >
+          <mat-option *ngFor="let name of invoiceNames" [value]="name">{{name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </div>
+
+
+    <div class="form-group regulation" style="display:block;margin-top: 5px">
+      <h5>To complete your registration, please tick the boxes below:</h5>
+
+      <div>
+        <mat-checkbox class="example-margin" id="check">
+
+        </mat-checkbox>
+        <label for="check">
+          I certify that this is a legitimate accommodation business
+          with all necessary licenses and permits, which can be shown upon first request.
+          Booking.com B.V. reservesthe right to verify and investigate any details provided in this registration.</label>
+
+      </div>
+
+<div>
+  <mat-checkbox class="example-margin">
+  </mat-checkbox>
+  <label>
+    I have read, accepted and agreed to the General Delivery Terms and Privacy
+    Statement.
+  </label>
+</div>
+
+
+    </div>
+
+
+    <button class="btn btn-success block" type="submit">Complete Registration</button>
+
+  </form>
+</div>
+

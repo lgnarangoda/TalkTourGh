@@ -1,0 +1,45 @@
+<div class="row sticky" [hidden]="mobileQuery.matches">
+  <div class="col-xl-10 col-12 step-bar">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link
+         *ngFor="let link of routeLinks"
+         [routerLink]="[{outlets: {sidebar: [link.link]}}]"
+
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+  </div>
+</div>
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+
+  <mat-toolbar color="primary" class="example-toolbar sticky" [hidden]="!mobileQuery.matches">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" >
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"  [(opened)]="opened" [fixedInViewport]="mobileQuery.matches" fixedTopGap="85" >
+      <mat-nav-list>
+        <a mat-list-item routerLink="." *ngFor="let link of routeLinks" [routerLink]="[{outlets: {sidebar: [link.link]}}] "
+           routerLinkActive #rla="routerLinkActive">{{link.label}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content >
+
+      <div class="container">
+
+        <router-outlet name="sidebar"></router-outlet>
+
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+

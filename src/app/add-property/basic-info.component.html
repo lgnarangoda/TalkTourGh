@@ -1,0 +1,171 @@
+<div class="row out page-wrap">
+
+  <form [formGroup]="hotelDetailsForms" (ngSubmit)="onProceed(f)" #f="ngForm" class="form col-lg-8 col-11">
+
+    <div formGroupName="property_details">
+
+      <div class="form-group" appActiveDirective>
+        <h4>What would you like to list?</h4>
+        <!--<mat-icon>close</mat-icon>-->
+        <!--<i class="fa fa-times-circle"></i>-->
+
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Which property type below best describes your property?"
+                      formControlName="propertyType" (selectionChange)="changeProperty($event.target)">
+            <mat-option *ngFor="let key of objectKeys(items)" [value]="key">{{key}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--<div *ngFor="let key of objectKeys(items)">{{key + ' : ' + items[key]}}</div>-->
+
+        <div id="acco-type-help" style="display: block;color: dimgray" class="">
+          <p><strong>{{description}}</strong></p>
+        </div>
+
+          <mat-form-field class="example-full-width couple">
+            <input type="text" formControlName="propertyName" class="form-control"   maxlength="30" matInput placeholder="What is the name of your property">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width couple">
+          <input
+            type="number"
+            id="noOfRooms"
+            formControlName="noOfRooms"
+            class="form-control"
+            min="0"
+            maxlength="5"
+            matInput placeholder="Total number of rooms">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width couple">
+
+          <mat-select
+            id="starRating"
+            formControlName="starRating"
+            placeholder="Star rating">
+            <mat-option value="N/A">N/A</mat-option>
+            <mat-option value="1">1 star</mat-option>
+            <mat-option value="2">2 star</mat-option>
+            <mat-option value="3">3 star</mat-option>
+            <mat-option value="4">4 star</mat-option>
+            <mat-option value="5">5 star</mat-option>
+          </mat-select>
+          </mat-form-field>.
+
+      </div>
+    </div>
+
+
+    <div class="form-group clearfix" appActiveDirective>
+      <h4>What are the contact details for this property?</h4>
+
+        <mat-form-field class="example-full-width couple">
+        <input
+          type="text"
+          id="contactName"
+          formControlName="contactName"
+          matInput placeholder="Contact name"
+          maxlength="15"
+        >
+        </mat-form-field>
+
+      <div class="couple">
+        <label>Contact number (so we can assist with your registration when needed)</label>
+
+        <div class="col-md-6" style="display:inline-block">
+          <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            id="phoneNumber"
+            formControlName="phoneNo"
+            matInput placeholder="Phone number"
+            maxlength="15"
+          >
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" style="float:right">
+          <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            id="alphoneNumber"
+            formControlName="altphoneNo"
+            class="form-control"
+            maxlength="15"
+            matInput placeholder="Alternate number"
+          >
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+
+
+    <h4>Where is your property located?</h4>
+
+    <div class="form-group">
+
+      <div class="couple">
+        <label>Street address</label>
+        <input
+          type="text"
+          id="address"
+          formControlName="streetAdd"
+          class="form-control"
+        maxlength="40">
+      </div>
+
+      <div class="couple">
+        <label>Address line 2</label>
+        <input
+          type="text"
+          id="address2"
+          formControlName="addressLine2"
+          class="form-control"
+        maxlength="40">
+      </div>
+
+      <div class="couple">
+        <label for="country">Country/Region</label>
+        <select
+          id="country"
+          class="form-control"
+          formControlName="country">
+          <option value="Sri Lanka" selected="selected">Sri Lanka</option>
+          <option value="Us">Us</option>
+          <option value="Canada">Canada</option>
+          <option value="Austrailia">Austrailia</option>
+        </select>
+      </div>
+
+      <div class="couple">
+        <label>City</label>
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          class="form-control"
+        maxlength="30">
+      </div>
+
+      <div class="couple">
+        <label>Postal Code</label>
+        <input
+          type="number"
+          id="postal_code"
+          formControlName="postalCode"
+          class="form-control"
+          min="0"
+          maxlength="5"
+        >
+      </div>
+
+    </div>
+
+
+    <button class="btn btn-success block" type="submit">Proceed</button>
+
+  </form>
+</div>
+
+
+

@@ -1,0 +1,267 @@
+<div class="row out">
+
+  <form [formGroup]="policiesForm" (ngSubmit)="onSubmitplicies(f)" style="padding: 0" class="form col-lg-8 col-11" #f="ngForm">
+
+
+    <h3>Policies</h3>
+    <label>Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?</label>
+
+    <div class="form-group">
+      <h5>Cancellations</h5>
+      <label>How many days in advance can guests cancel free of charge?</label>
+      <select
+        id="cancellationsDays"
+        class="form-control"
+        formControlName="cancellationsDays"
+
+      >
+        <option *ngFor="let cancellationsDay of cancellationsDays" [value]="cancellationsDay">{{cancellationsDay}}
+        </option>
+      </select>
+
+
+      <div class="couple">
+        <label>or guests will pay 100%</label>
+        <select
+          id="pay"
+          class="form-control"
+          formControlName="pay"
+
+
+        >
+          <option value="of the frist night">of the frist night</option>
+          <option value="of the full stay">of the full stay</option>
+        </select>
+      </div>
+
+
+      <div class="warning">
+
+        The guest must cancel by 18:00 on the day of arrival or pay 100% of the price for the first night.
+
+        Please note: You'll be able to make changes to your policies later on. This is just to get you started.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h5 class="warning-header">Protect against accidental bookings</h5>
+      <mat-slide-toggle [checked]="checked">Yes</mat-slide-toggle>
+      <label>To save you time handling accidental bookings, we automatically waive cancellation fees for guests that
+        cancel
+        within the first 24 hours of a booking being made. You can change this period of time later in your property
+        management platform.</label>
+
+    </div>
+
+    <div class="form-group col-lg-6 check-in">
+      <h5>Check-in</h5>
+      <mat-form-field class="example-full-width">
+        <mat-select id="option14" formControlName="checkInFrom" placeholder="from:">
+          <mat-option disabled="disabled" value="" selected="">
+            Other
+          </mat-option>
+          <mat-option value="07:00">
+            07:00
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-select id="option18" formControlName="checkInTo" placeholder="to:">
+          <mat-option disabled="disabled" value="" selected="">
+            Other
+          </mat-option>
+          <mat-option value="07:00">
+            07:00
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-lg-6 check-out">
+      <h5>Check-out</h5>
+      <mat-form-field class="example-full-width">
+        <mat-select id="option411" formControlName="checkOutFrom" placeholder="from:">
+          <mat-option disabled="disabled" value="" selected="">
+            Other
+          </mat-option>
+          <mat-option value="07:00">
+            07:00
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-select id="option422" formControlName="checkOutTo" placeholder="to:">
+          <mat-option disabled="disabled" value="" selected="">
+            Other
+          </mat-option>
+          <mat-option value="07:00">
+            07:00
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group" style="display:block;margin-top: 5px">
+      <h5>Children</h5>
+      <label>Can you accommodate children? (You can specify the ages and prices later)</label><br>
+      <div >
+        <mat-radio-group formControlName="children">
+          <mat-radio-button value="Yes">Yes</mat-radio-button>
+          <mat-radio-button value="No">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="form-group clearfix">
+      <h5>Pets</h5>
+
+      <div class="pets1 col-lg-6">
+        <mat-form-field class="example-full-width">
+
+          <mat-select id="pet" formControlName="allowPets" placeholder="Do you allow pets?" (selectionChange)="IsAllowPetss($event.target)">
+            <mat-option *ngFor="let op of optionList" value="op">
+              {{op}}
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div *ngIf="isAllowPets" class="pets2 col-lg-6">
+        <mat-form-field class="example-full-width">
+          <mat-select id="petCharge"
+                      formControlName="chargesForPets" placeholder="Are there additional charges for pets?">
+            <mat-option value="yes">
+              Pets can stay free
+            </mat-option>
+            <mat-option value="no">
+              Charges may apply
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button class="btn btn-success block" type="submit" [disabled]="!propertyId">Proceed</button>
+
+  </form>
+</div>
+
+
+<!--<div class="js-time-options-group time-options-group">-->
+<!--<div class="radio">-->
+<!--<label>-->
+<!--<input type="radio" name="checkin_start_preset" value="12:00" checked="">-->
+<!--<span>12:00</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="radio">-->
+<!--<label>-->
+<!--<input type="radio" name="checkin_start_preset" value="14:00">-->
+<!--<span>14:00</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="radio">-->
+<!--<label>-->
+<!--<input type="radio" name="checkin_start_preset" value="15:00">-->
+<!--<span>15:00</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="radio">-->
+<!--<select class="form-control" id="checkin_start" name="checkin_start">-->
+<!--<option disabled="disabled" value="" selected="">-->
+<!--Other</option>-->
+<!--<option value="07:00">-->
+<!--07:00-->
+<!--</option>-->
+<!--<option value="07:30">-->
+<!--07:30-->
+<!--</option>-->
+<!--<option value="08:00">-->
+<!--08:00-->
+<!--</option>-->
+<!--<option value="08:30">-->
+<!--08:30-->
+<!--</option>-->
+<!--<option value="09:00">-->
+<!--09:00-->
+<!--</option>-->
+<!--<option value="09:30">-->
+<!--09:30-->
+<!--</option>-->
+<!--<option value="10:00">-->
+<!--10:00-->
+<!--</option>-->
+<!--<option value="10:30">-->
+<!--10:30-->
+<!--</option>-->
+<!--<option value="11:00">-->
+<!--11:00-->
+<!--</option>-->
+<!--<option value="11:30">-->
+<!--11:30-->
+<!--</option>-->
+<!--<option value="12:00">-->
+<!--12:00-->
+<!--</option>-->
+<!--<option value="12:30">-->
+<!--12:30-->
+<!--</option>-->
+<!--<option value="13:00">-->
+<!--13:00-->
+<!--</option>-->
+<!--<option value="13:30">-->
+<!--13:30-->
+<!--</option>-->
+<!--<option value="14:00">-->
+<!--14:00-->
+<!--</option>-->
+<!--<option value="14:30">-->
+<!--14:30-->
+<!--</option>-->
+<!--<option value="15:00">-->
+<!--15:00-->
+<!--</option>-->
+<!--<option value="15:30">-->
+<!--15:30-->
+<!--</option>-->
+<!--<option value="16:00">-->
+<!--16:00-->
+<!--</option>-->
+<!--<option value="16:30">-->
+<!--16:30-->
+<!--</option>-->
+<!--<option value="17:00">-->
+<!--17:00-->
+<!--</option>-->
+<!--<option value="17:30">-->
+<!--17:30-->
+<!--</option>-->
+<!--<option value="18:00">-->
+<!--18:00-->
+<!--</option>-->
+<!--<option value="18:30">-->
+<!--18:30-->
+<!--</option>-->
+<!--<option value="19:00">-->
+<!--19:00-->
+<!--</option>-->
+<!--<option value="19:30">-->
+<!--19:30-->
+<!--</option>-->
+<!--<option value="20:00">-->
+<!--20:00-->
+<!--</option>-->
+
+<!--</select>-->
+
+
+<!--</div>-->
+<!--</div>-->

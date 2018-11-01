@@ -1,0 +1,37 @@
+<header id="header" class="header header-hide">
+  <div class="container">
+
+    <div id="logo" class="pull-left">
+      <!--<h1><a href="#body" class="scrollto"><span>e</span>Startup</a></h1>-->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="#body" ><img src="../../assets/WEB%20LOGO.png" alt="" title="" class="logo"/></a>
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><a (click)="navigateToHomepage()">Home</a></li>
+
+        <li class="menu-has-children">
+          <a *ngIf="isLoggedIn$ | async as isLoggedIn; else myaccount" >{{name}}</a>
+          <ng-template #myaccount><a href="">My Account</a></ng-template>
+          <ul>
+
+            <!--if login-->
+            <li><a  (click)="signOut()" *ngIf="isLoggedIn$ | async as isLoggedIn; else signIn">Sign Out</a></li>
+            <!--if not log in-->
+
+            <ng-template #signIn><li><a  (click)="openDialog()">Sign In</a></li></ng-template>
+            <hr *ngIf="isLoggedIn$ | async as isLoggedIn" >
+            <!--if login-->
+            <li><a (click)="navigateResult()" *ngIf="isLoggedIn$ | async as isLoggedIn">Your Properties</a></li>
+
+            <li><a (click)="navigateAddProperty()" *ngIf="isLoggedIn$ | async as isLoggedIn">Add Properties</a></li>
+
+          </ul>
+        </li>
+
+
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+</header><!-- #header -->

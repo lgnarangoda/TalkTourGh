@@ -1,0 +1,55 @@
+<div class="row out page-wrap">
+
+  <div style="padding: 0" class="form col-lg-8 col-11">
+
+
+
+    <h3>Property photos</h3>
+    <label>Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property's page on the Booking.com website.
+    </label>
+
+    <div class="form-group">
+      <h5>Photo gallery</h5>
+      <div *ngIf="verificationCardImagePath.length == 0">
+        <label class="content">Upload at least 1 photo</label><br>
+        <label class="content" style="font-size: 15px">You will be able to upload more after registration</label><br>
+        <label class="content" style="font-size: 17px">Drag and drop your photos here</label><br>
+        <label class="content" style="font-size: 15px; color: dimgray">or</label><br>
+      </div>
+
+      <div  *ngIf="verificationCardImagePath.length != 0">
+        <div class="panel panel-primary" style="text-align: center">
+          <div class="panel-heading">List of Images</div>
+          <div class="img" *ngFor="let imageFile of verificationCardImagePath">
+            <div class="panel-body">
+              <div class="picWithClose">
+                <img  [src]="imageFile.image" class="image-style"/>
+                <!--<button class="btn-sm btn btn-danger" (click)="deletePhoto(imageFile.id, imageFile.image)"><mat-icon>thumbs-up</mat-icon></button>-->
+                <i class="fa fa-times-circle fa-3x close" (click)="deletePhoto(imageFile.id, imageFile.image)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input #verificationCardImageUploader [(ngModel)]="photoInput" class="ip-file-upload-btn btn btn-primary content" type="file" multiple="multiple" accept="image/*" (change)="setImage($event)"/>
+
+
+      <div class="info">
+        <h5>No professional photos? No problem.</h5>
+        <p>You can use:  A smartphone  A digital camera</p>
+        <p>Top tip! Guests love photos! Here are some tips on taking great photos of your property</p>
+        <P>If you don’t know who made a photo, it's best to avoid using it. Only use photos to which you own the copyright yourself or if taken by someone else that you have photographer’s consent to use the photo.</P>
+      </div>
+
+      <!--<span-->
+      <!--*ngIf="!hotelDetailsForms.get('hotel_name').valid && hotelDetailsForms.get('hotel_name').touched"-->
+      <!--class="help-block">Please enter a valid hotel name!</span>-->
+    </div>
+
+
+    <button class="btn btn-success block" [disabled]="!propertyId" (click)="uploadFile()">Proceed</button>
+
+  </div>
+</div>
+

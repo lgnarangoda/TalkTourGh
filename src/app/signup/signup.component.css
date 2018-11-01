@@ -1,0 +1,17 @@
+.form{
+  border: 1px solid red;
+
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.row{
+  margin-top: 75px;
+}
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+.help-block{
+  color: red;
+}
+
