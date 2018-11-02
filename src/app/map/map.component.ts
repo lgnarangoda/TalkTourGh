@@ -15,6 +15,8 @@ export class MapComponent implements OnInit {
   // @ViewChild('search') public searchElement: ElementRef;
   // lat: String = '39.8282';
   // lng: String = '-98.5795';
+
+
   propertyId: number;
   public lat: number;
   public lng: number;

@@ -1,4 +1,3 @@
-import {Component, Inject, OnInit} from '@angular/core';
 import {AuthGuard} from '../auth/auth.guard';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
@@ -8,6 +7,7 @@ import {cleanSession} from 'selenium-webdriver/safari';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {SigninComponent} from '../signin/signin.component';
 import {AuthServiceLocalService} from '../services/auth-service-local.service';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -15,7 +15,7 @@ import {AuthServiceLocalService} from '../services/auth-service-local.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit{
   isLoggedIn$: Observable<boolean>;
   nativeWindow: any;
 
@@ -52,12 +52,16 @@ export class HeaderComponent implements OnInit {
   openDialog() {
     this.dialog.open(SigninComponent, {});
   }
-  navigateResult(){
+
+  navigateResult() {
     this.router.navigate(['result-page']);
   }
-  navigateAddProperty(){
+
+  navigateAddProperty() {
     this.router.navigate([{outlets: {sidebar: 'add-property'}}]);
   }
+
+
 
 }
 
@@ -69,4 +73,3 @@ export class HeaderComponent implements OnInit {
 // export class DialogDataExampleDialogComponent {
 //   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 // }
-

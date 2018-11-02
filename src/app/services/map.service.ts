@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {observable, Observable} from 'rxjs/index';
+import { Observable } from 'rxjs/Rx'
 
 
 interface Location {
@@ -75,7 +75,7 @@ export class MapService {
       }
     ).catch(
       err => {
-        return Observable.throw(err);
+        return Observable.throwError(err);
 
       });
 

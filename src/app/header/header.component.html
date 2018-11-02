@@ -74,7 +74,7 @@
             <ng-template #signIn><li><a  (click)="openDialog()">Sign In</a></li></ng-template>
             <hr *ngIf="isLoggedIn$ | async as isLoggedIn" >
             <!--if login-->
-            <li><a (click)="navigateResult()" *ngIf="isLoggedIn$ | async as isLoggedIn">Your Properties</a></li>
+            <li><a class="te" (click)="navigateResult()" *ngIf="isLoggedIn$ | async as isLoggedIn">Your Properties</a></li>
 
             <li><a (click)="navigateAddProperty()" *ngIf="isLoggedIn$ | async as isLoggedIn">Add Properties</a></li>
 
