@@ -20,7 +20,7 @@ export class FacilitiesService {
         'Authorization': 'Bearer ' + localStorage.getItem('currentUser')
       }
     );
-
+    const params = new HttpParams().set('propertyId', propertyId);
     console.log('i', internet, 'p', parking, 'b', breakfast, 'l', language.join(','), 'o', other)
 
     const data = JSON.stringify({
@@ -34,7 +34,7 @@ export class FacilitiesService {
       'propertyId': propertyId
     });
     const url = 'http://localhost:8080/facility/facilityInfo';
-    return this.http.post(url, data, {headers: headers}).map(
+    return this.http.post(url, data, {headers: headers, params: params}).map(
       body => {
         console.log(body)
         return body;
@@ -71,3 +71,4 @@ export class FacilitiesService {
 
 
 }
+

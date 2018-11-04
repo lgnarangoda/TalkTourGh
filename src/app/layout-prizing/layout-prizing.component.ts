@@ -19,16 +19,16 @@ export class LayoutPrizingComponent implements OnInit {
   noOfRooms = ['1', '2', '3', '4', '5'];
   noOfBeds = ['1', '2', '3', '4', '5'];
   noOfPersons = ['1', '2', '3', '4', '5'];
-  roomSizeTypes = ['squre meter', 'squre feet']
-  bedTypes = ['Single bed / 90-130 cm wide', 'Double bed / 131-150 cm wide']
+  roomSizeTypes = ['squre meter', 'squre feet'];
+  bedTypes = ['Single bed / 90-130 cm wide', 'Double bed / 131-150 cm wide'];
   smokings = ['smoke', 'Non-smoke'];
 
   layoutPrizingForm: FormGroup;
   roomType;
   response;
   IsUpdate = false;
-  norooms = true
-roomId = 0;
+  norooms = true;
+  roomId = 0;
   roomTypeValue;
   noOfRoomsValue;
   smokingValue;
@@ -75,37 +75,42 @@ roomId = 0;
 
   onSubmitLayout() {
 
-    this.loadFormValue()
+    this.loadFormValue();
 
     this.roomInfoService.storeRoomInfo(this.roomTypeValue, this.noOfRoomsValue,
       this.smokingValue, this.bedTypeValue, this.noOfBedsValue, this.guestValue,
-      this.roomSizeValue, this.roomSizeTypeValue, this.curencyValue, this.priceValue, this.propertyId)
+      this.roomSizeValue, this.roomSizeTypeValue, this.curencyValue, this.priceValue, this.propertyId, this.roomId)
       .subscribe(response => {
         // const res = JSON.parse(response.toString());
         // console.log(res)
 
-        if (response['success']) {
-
-          this.getRoomInfo()
-        }
+        // if (response['success']) {
+        //
+        //   this.getRoomInfo()
+        // }
+        this.getRoomInfo();
+        this.IsUpdate = false;
+        this.roomId = 0;
 
       });
   }
 
-  update(){
+  update() {
+    this.onSubmitLayout();
 
   }
+
   loadFormValue() {
-    this.roomTypeValue = this.layoutPrizingForm.get('roomDetails.roomsType').value
-    this.noOfRoomsValue = this.layoutPrizingForm.get('roomDetails.LnoOfRooms').value
-    this.smokingValue = this.layoutPrizingForm.get('roomDetails.smoking').value
-    this.bedTypeValue = this.layoutPrizingForm.get('roomDetails.bedType').value
-    this.noOfBedsValue = this.layoutPrizingForm.get('roomDetails.noOfBeds').value
-    this.guestValue = this.layoutPrizingForm.get('roomDetails.guest').value
-    this.roomSizeValue = this.layoutPrizingForm.get('roomDetails.roomSize').value
-    this.roomSizeTypeValue = this.layoutPrizingForm.get('roomDetails.roomSizeType').value
-    this.curencyValue = this.layoutPrizingForm.get('roomDetails.curency').value
-    this.priceValue = this.layoutPrizingForm.get('roomDetails.price').value
+    this.roomTypeValue = this.layoutPrizingForm.get('roomDetails.roomsType').value;
+    this.noOfRoomsValue = this.layoutPrizingForm.get('roomDetails.LnoOfRooms').value;
+    this.smokingValue = this.layoutPrizingForm.get('roomDetails.smoking').value;
+    this.bedTypeValue = this.layoutPrizingForm.get('roomDetails.bedType').value;
+    this.noOfBedsValue = this.layoutPrizingForm.get('roomDetails.noOfBeds').value;
+    this.guestValue = this.layoutPrizingForm.get('roomDetails.guest').value;
+    this.roomSizeValue = this.layoutPrizingForm.get('roomDetails.roomSize').value;
+    this.roomSizeTypeValue = this.layoutPrizingForm.get('roomDetails.roomSizeType').value;
+    this.curencyValue = this.layoutPrizingForm.get('roomDetails.curency').value;
+    this.priceValue = this.layoutPrizingForm.get('roomDetails.price').value;
   }
 
 
@@ -113,6 +118,7 @@ roomId = 0;
     this.roomInfoService.getRoomInfo(this.propertyId).subscribe(response => {
 
       this.response = response;
+      console.log(this.response);
       if (this.response.length > 0) {
         this.norooms = false;
       } else {
@@ -122,17 +128,17 @@ roomId = 0;
   }
 
 
-  editRoom(roomId) {
+  editRoom(i, roomId) {
 
-    this.updatePage(roomId)
+    this.updatePage(i);
     this.IsUpdate = true;
     this.roomId = roomId;
   }
 
   deleteRoom(roomId) {
     this.roomInfoService.deleteRoom(roomId).subscribe(response => {
-      console.log(response)
-      this.getRoomInfo()
+      console.log(response);
+      this.getRoomInfo();
     });
 
   }
@@ -168,3 +174,6 @@ roomId = 0;
     });
   }
 }
+
+
+

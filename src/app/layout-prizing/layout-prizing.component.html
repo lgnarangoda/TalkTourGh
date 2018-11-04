@@ -134,7 +134,7 @@
       </div>
 
       <div class="row" *ngIf="!IsUpdate;else updateButton">
-        <button [disabled]="!propertyId" class="btn btn-success block" type="submit" [disabled]="!propertyId">Proceed</button>
+        <button [disabled]="!propertyId" class="btn btn-success block" type="submit" [disabled]="!propertyId">Add Room</button>
       </div>
       <ng-template class="row" #updateButton>
         <button class="btn btn-success block" (click)="update()" [disabled]="!propertyId">Update Room</button>
@@ -157,7 +157,7 @@
     <div>
       {{room.roomType}}
       <span>{{room.noOfRooms}}</span>
-      <button mat-raised-button (click)="editRoom(i)">Edit</button>
+      <button mat-raised-button (click)="editRoom(i,room.roomId)">Edit</button>
       <button mat-raised-button (click)="deleteRoom(room.roomId)">Delete</button>
 
     </div>

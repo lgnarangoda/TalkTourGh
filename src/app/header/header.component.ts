@@ -57,7 +57,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   navigateResult() {
-    this.router.navigate(['result-page']);
+    // this.router.navigate(['result-page']);
+    this.router.navigate( ['result-page', { outlets: { sidebar: null } }]);
   }
 
   navigateAddProperty() {

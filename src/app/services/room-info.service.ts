@@ -11,7 +11,7 @@ export class RoomInfoService {
   }
 
   storeRoomInfo(roomType, noOfRooms, smoking, bedType, noOfBeds, guest, roomSize, roomSizeType,
-                curency, price, propertyId): Observable<object> {
+                curency, price, propertyId, roomId): Observable<object> {
 
     const headers = new HttpHeaders(
       {
@@ -21,7 +21,7 @@ export class RoomInfoService {
       }
     );
     const data = JSON.stringify({
-      'username': localStorage.getItem('username'),
+
       'roomType': roomType,
       'noOfRooms': noOfRooms,
       'smoking': smoking,
@@ -34,10 +34,11 @@ export class RoomInfoService {
       'price': price,
       'propertyId': propertyId
     });
+    const params = new HttpParams().set('roomId', roomId);
     const url = 'http://localhost:8080/room/roomInfo';
-    return this.http.post(url, data, {headers: headers}).map(
+    return this.http.post(url, data, {headers: headers, params: params}).map(
       body => {
-        console.log(body)
+        // console.log(body)
         return body;
       }
     ).catch(
@@ -60,7 +61,7 @@ export class RoomInfoService {
     const url = 'http://localhost:8080/room/getRoomInfo';
     return this.http.get(url, {headers: headers, params: params}).map(
       body => {
-        console.log(body)
+        // console.log(body)
         return body;
       }
     ).catch(
@@ -84,7 +85,7 @@ export class RoomInfoService {
     const url = 'http://localhost:8080/room/deleteRoom';
     return this.http.get(url, {headers: headers, params: params}).map(
       body => {
-        console.log(body)
+        // console.log(body)
         return body;
       }
     ).catch(

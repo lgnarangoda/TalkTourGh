@@ -66,7 +66,7 @@ export class FacilitiesAndServicesComponent implements OnInit {
   getInfor() {
     this.facilityInfo.getFacilityInfo(this.propertyId).subscribe(response => {
       if (response.toString().length > 0) {
-        this.response = response[0];
+        this.response = response;
         this.facilityId = this.response.facilityId;
       this.languageResponse = this.response.language.split(',');
         this.updatePage();

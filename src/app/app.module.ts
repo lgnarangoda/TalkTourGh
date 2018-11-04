@@ -45,7 +45,7 @@ import {AvialabilityComponent} from './avialability/avialability.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
-import { SecondeHeaderComponent } from './header/seconde-header/seconde-header.component';
+import { SecondeHeaderComponent } from './seconde-header/seconde-header.component';
 import { Footer2Component } from './footer2/footer2.component';
 import {AgmCoreModule} from '@agm/core';
 import { MapComponent } from './map/map.component';

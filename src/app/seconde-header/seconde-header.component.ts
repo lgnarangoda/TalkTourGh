@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthGuard} from '../../auth/auth.guard';
+import {AuthGuard} from '../auth/auth.guard';
 import {Router} from '@angular/router';
 
-import {SigninComponent} from '../../signin/signin.component';
-import {WindowRef} from '../../services/WindowRef';
+import {SigninComponent} from '../signin/signin.component';
+import {WindowRef} from '../services/WindowRef';
 import {MatDialog} from '@angular/material';
-import {Observable} from '../../../../node_modules/rxjs/Rx';
-import {AuthServiceLocalService} from '../../services/auth-service-local.service';
+import {Observable} from '../../../node_modules/rxjs/Rx';
+import {AuthServiceLocalService} from '../services/auth-service-local.service';
 
 @Component({
   selector: 'app-seconde-header',
@@ -44,8 +44,9 @@ export class SecondeHeaderComponent implements OnInit {
   openDialog() {
     this.dialog.open(SigninComponent, {});
   }
-  navigateResult(){
-    this.router.navigate(['result-page']);
+  navigateResult() {
+    // this.router.navigate(['result-page']);
+    this.router.navigate([{outlets: {sidebar: null}}]);
   }
   navigateAddProperty(){
     localStorage.removeItem('propertyId')
@@ -53,4 +54,7 @@ export class SecondeHeaderComponent implements OnInit {
   }
 
 }
+
+
+
 
